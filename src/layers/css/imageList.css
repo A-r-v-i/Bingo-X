@@ -1,0 +1,33 @@
+.image-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-container img {
+  min-height: 500px;
+  min-width: 500px;
+  margin: 0 0 10px 0;
+}
+
+.image-container .tags {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  padding-left: 70px;
+}
+
+.tags::before {
+  content: "tags: ";
+  position: absolute;
+  left: 20px;
+  top: 10px;
+}
+
+.tags #tag {
+  text-transform: capitalize;
+  margin: 5px 15px 5px 0;
+  background: rgba(216, 112, 147, 0.514);
+  border: 2px solid palevioletred;
+  border-radius: 5px;
+  padding: 3px 5px;
+}
