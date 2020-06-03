@@ -21,7 +21,6 @@ class ImageList extends Component {
   renderImages = (images) => {
     return (
     images.map((image) => {
-      console.log(image.urls.small)
       return (
         <div id="image" key={image.id}>
           <img src={image.urls.small} alt={image.alt_description} />
@@ -33,7 +32,7 @@ class ImageList extends Component {
 
   render() {
     const { results } = this.props.images;
-    console.log(results);
+    // console.log(results);
 
     return <div className="images-container">{(results)?(this.renderImages(results)):<>loading</>}</div>;
   }

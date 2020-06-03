@@ -11,3 +11,15 @@ export const fetchImages = () => {
     });
   };
 };
+
+
+export const searchImages = (tag) => {
+  return async (dispatch, getState) => {
+    await unSplash.get(`/search/photos?query=${tag}`).then(response => {
+      dispatch({
+        type: "SEARCH_IMAGES",
+        payload: response.data
+      })
+    })
+  }
+}
