@@ -1,18 +1,25 @@
-.image-container {
+.images-container {
   display: flex;
   flex-direction: column;
+  margin: 25px;
+  justify-content: center;
+  align-items: center;
 }
 
-.image-container img {
-  min-height: 500px;
-  min-width: 500px;
+.images-container #image {
+  margin: 0 0 20px 0;
+}
+
+.images-container #image img{
+  min-height: 100px;
+  min-width: 100px;
   margin: 0 0 10px 0;
 }
 
-.image-container .tags {
+.images-container #image .tags {
+  position: relative;
   display: flex;
   flex-direction: row;
-  position: relative;
   padding-left: 70px;
 }
 
@@ -23,11 +30,28 @@
   top: 10px;
 }
 
-.tags #tag {
-  text-transform: capitalize;
+#image .tags .tag {
+  text-transform: uppercase;
   margin: 5px 15px 5px 0;
   background: rgba(216, 112, 147, 0.514);
   border: 2px solid palevioletred;
+  color: rgb(87, 87, 87);
   border-radius: 5px;
   padding: 3px 5px;
+  cursor: pointer;
 }
+
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: azure;
+  width: 90vw;
+  height: 80vh;
+  margin: 20px 0 0 0;
+}
+
+.spinner {
+  height: 250px;
+  width: 250px;
+} 

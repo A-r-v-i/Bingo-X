@@ -1,8 +1,12 @@
 import unSplash from "../../api/unsplash";
 
+const getImages=async(tag="marvel")=>{
+  return await unSplash.get(`/search/photos?query=${tag}`)
+}
+
 export const fetchImages = () => {
   return async (dispatch, getState) => {
-    await unSplash.get("/search/photos?query=hacker").then((response) => {
+    await getImages().then((response) => {
       //console.log(response.data);
       dispatch({
         type: "FETCH_IMAGES",
@@ -12,10 +16,9 @@ export const fetchImages = () => {
   };
 };
 
-
 export const searchImages = (tag) => {
   return async (dispatch, getState) => {
-    await unSplash.get(`/search/photos?query=${tag}`).then(response => {
+    await getImages(tag).then(response => {
       dispatch({
         type: "SEARCH_IMAGES",
         payload: response.data
