@@ -11,8 +11,8 @@
 }
 
 .images-container #image img{
-  min-height: 100px;
-  min-width: 100px;
+  min-height: 300px;
+  width: 500px;
   margin: 0 0 10px 0;
 }
 
@@ -20,15 +20,16 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  padding-left: 70px;
+  justify-content: space-between;
+  /* padding-left: 70px; */
 }
 
-.tags::before {
+/* .tags::before {
   content: "tags: ";
   position: absolute;
   left: 20px;
   top: 10px;
-}
+} */
 
 #image .tags .tag {
   text-transform: uppercase;
