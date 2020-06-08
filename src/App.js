@@ -12,7 +12,6 @@ export default class App extends Component {
   }
 
   onSearchSubmit = async (term) => {
-    //const response = await unsplash.get('/photos')
     const response = await unsplash.get(`/search/photos?query=${term}`);
     console.log(response);
     this.setState({

@@ -1,5 +1,6 @@
 const initState = {
-  images: []
+  images: [],
+  image:''
 };
 
 export default (state=initState, action) => {
@@ -13,6 +14,10 @@ export default (state=initState, action) => {
       state = action.payload;
       return state;
 
+    case "FETCH_BIG_IMAGE":
+      state.image = action.payload;
+      return state.image;
+      
     default:
       return state;  
   }

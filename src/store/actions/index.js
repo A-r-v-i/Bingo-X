@@ -26,3 +26,18 @@ export const searchImages = (tag) => {
     })
   }
 }
+
+export const fetchBigImage=(tag,id) => {
+  return async (dispatch, getState)=> {
+    const images = await getImages(tag);
+    await images.filter(image => {
+      return image.id === id
+    })
+    .then(image => {
+      dispatch ({
+        type: "FETCH_BIG_IMAGE",
+        payload: image
+      })
+    })
+  }
+}

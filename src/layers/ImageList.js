@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Spinner } from "reactstrap";
 import UserDetails from "./UserDetails";
-import { fetchImages, searchImages } from "../store/actions";
+import { fetchImages, searchImages, fetchBigImage } from "../store/actions";
+import OpenImage from "./OpenImage";
 import "./css/imageList.css";
 import unsplash from "../api/unsplash";
 
@@ -10,10 +11,10 @@ class ImageList extends Component {
   constructor(props) {
     console.log(props);
     super(props);
-    // this.state = {
-    //   term: "",
-    //   images: [],
-    // };
+    this.state = {
+      isOpen: false,
+      image: '',
+    };
   }
 
   componentDidMount() {
@@ -22,11 +23,27 @@ class ImageList extends Component {
     console.log(i);
   }
 
+  openImage = (image) => {
+    //console.log("clicked", image);
+    this.setState({
+      isOpen: true,
+      image: image
+    });
+  };
+
+  closeImage=() => {
+    this.setState({isOpen:false, image: ''})
+  }
+
   renderImages = (images) => {
     return images.map((image) => {
       return (
         <div id="image" key={image.id}>
-          <img src={image.urls.regular} alt={image.alt_description} />
+          <img
+            onClick={() => this.openImage(image)}
+            src={image.urls.regular}
+            alt={image.alt_description}
+          />
           <div className="tags">
             <div>
               {image.tags.map((tag) => {
@@ -61,6 +78,7 @@ class ImageList extends Component {
         ) : (
           <Spinner className="spinner" type="grow" color="secondary" />
         )}
+        {this.state.isOpen && <OpenImage image={this.state.image} isOpen={true} handleClick={this.closeImage} />}
       </div>
     );
   }
@@ -80,6 +98,9 @@ const mapDispatchToProps = (dispatch) => {
     searchImages: (tag) => {
       dispatch(searchImages(tag));
     },
+    fetchBigImage: (tag,id) => {
+      dispatch(fetchBigImage(tag,id));
+    }
   };
 };
 
