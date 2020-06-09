@@ -1,10 +1,10 @@
 const initState = {
   images: [],
-  // image:''
+  image:''
 };
 
-export default (state=initState, action) => {
-  switch(action.type) {
+export default (state = initState, action) => {
+  switch (action.type) {
     case "FETCH_IMAGES":
       state = action.payload;
       //console.log(state);
@@ -14,12 +14,11 @@ export default (state=initState, action) => {
       state = action.payload;
       return state;
 
-    // case "FETCH_BIG_IMAGE":
-    //   state.image = action.payload;
-    //   return state;
-      
-    default:
-      return state;  
-  }
+    case "FETCH_BIG_IMAGE":
+      state = action.payload;
+      return state;
 
-}
+    default:
+      return state;
+  }
+};

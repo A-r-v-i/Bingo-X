@@ -27,16 +27,18 @@ export const searchImages = (tag) => {
   };
 };
 
-// export const fetchBigImage = (tag, id) => {
-//   return async (dispatch, getState) => {
-//     const images = await getImages(tag);
-//     const image = await images.filter((image) => {
-//       return image.id === id;
-//     });
-
-//     dispatch({
-//       type: "FETCH_BIG_IMAGE",
-//       payload: image,
-//     });
-//   };
-// };
+export const fetchBigImage = (id) => {
+  return async (dispatch, getState) => {
+    const images = await getImages();
+    const data = images.data.results;
+    console.log(data);
+    const image = await data.find((img) => {
+      return img.id === id;
+    });
+    console.log(id,image);
+    dispatch({
+      type: "FETCH_BIG_IMAGE",
+      payload: image,
+    });
+  };
+};
