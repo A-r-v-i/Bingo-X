@@ -18,8 +18,8 @@ class OpenImage extends Component {
       isOpen: this.props.isOpen,
       id: image.id
     });
-    console.log(this.props);
-    this.props.fetchBigImage(this.state.id);
+    // console.log(this.props);
+    // this.props.fetchBigImage(this.state.id);
   }
 
   handleChange(){

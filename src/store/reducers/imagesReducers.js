@@ -7,7 +7,6 @@ export default (state = initState, action) => {
   switch (action.type) {
     case "FETCH_IMAGES":
       state = action.payload;
-      //console.log(state);
       return state;
 
     case "SEARCH_IMAGES":

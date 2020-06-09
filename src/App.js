@@ -21,7 +21,6 @@ export default class App extends Component {
   render() {
     let imgLen = this.state.images.length;
     let noOfImgs = imgLen > 0 ? <p>Found {imgLen} no's of images</p> : null;
-
     return (
       <div className="container">
         <>
