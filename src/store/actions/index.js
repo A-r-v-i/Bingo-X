@@ -1,8 +1,8 @@
 import unSplash from "../../api/unsplash";
 
-const getImages=async(tag="marvel")=>{
-  return await unSplash.get(`/search/photos?query=${tag}`)
-}
+const getImages = async (tag = "marvel") => {
+  return await unSplash.get(`/search/photos?query=${tag}`);
+};
 
 export const fetchImages = () => {
   return async (dispatch, getState) => {
@@ -18,26 +18,25 @@ export const fetchImages = () => {
 
 export const searchImages = (tag) => {
   return async (dispatch, getState) => {
-    await getImages(tag).then(response => {
+    await getImages(tag).then((response) => {
       dispatch({
         type: "SEARCH_IMAGES",
-        payload: response.data
-      })
-    })
-  }
-}
+        payload: response.data,
+      });
+    });
+  };
+};
 
-export const fetchBigImage=(tag,id) => {
-  return async (dispatch, getState)=> {
-    const images = await getImages(tag);
-    await images.filter(image => {
-      return image.id === id
-    })
-    .then(image => {
-      dispatch ({
-        type: "FETCH_BIG_IMAGE",
-        payload: image
-      })
-    })
-  }
-}
+// export const fetchBigImage = (tag, id) => {
+//   return async (dispatch, getState) => {
+//     const images = await getImages(tag);
+//     const image = await images.filter((image) => {
+//       return image.id === id;
+//     });
+
+//     dispatch({
+//       type: "FETCH_BIG_IMAGE",
+//       payload: image,
+//     });
+//   };
+// };

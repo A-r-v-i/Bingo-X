@@ -11,7 +11,7 @@
   margin: 0 0 20px 0;
 }
 
-.images-container #image img{
+.images-container #image img {
   min-height: 300px;
   width: 500px;
   margin: 0 0 10px 0;
@@ -59,7 +59,11 @@
   position: absolute;
   top: 40%;
   left: 35%;
-} 
+}
+
+.blur {
+  filter: blur(10px);
+}
 
 .openImage {
   position: fixed;
@@ -69,14 +73,13 @@
   margin: 0;
   height: 100vh;
   width: 100vw;
-  top:0;
-  left:10%;
+  top: 0;
+  left: 1%;
   z-index: 11;
 }
 
 .openImage img {
-  height: 80%;
-  width: 80%;
-  position: relative;
-  left: -10%;
+  height: auto;
+  max-width: 70%;
+  position: absolute;
 }

@@ -32,7 +32,7 @@ class ImageList extends Component {
   };
 
   closeImage=() => {
-    this.setState({isOpen:false, image: ''})
+    this.setState({isOpen:false, image: ''});
   }
 
   renderImages = (images) => {
@@ -68,16 +68,17 @@ class ImageList extends Component {
   };
 
   render() {
-    const { results } = this.props.images;
-    console.log(results);
-
+    const {results}  = this.props.images;
+    const blur = this.state.isOpen ? true:false;
     return (
       <div className="images-container">
+      <div className={blur ? "blur": ""}>
         {results ? (
           this.renderImages(results)
         ) : (
           <Spinner className="spinner" type="grow" color="secondary" />
         )}
+        </div>
         {this.state.isOpen && <OpenImage image={this.state.image} isOpen={true} handleClick={this.closeImage} />}
       </div>
     );
@@ -85,8 +86,10 @@ class ImageList extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     images: state.images,
+    // image: state.image
   };
 };
 
@@ -98,9 +101,9 @@ const mapDispatchToProps = (dispatch) => {
     searchImages: (tag) => {
       dispatch(searchImages(tag));
     },
-    fetchBigImage: (tag,id) => {
-      dispatch(fetchBigImage(tag,id));
-    }
+    // fetchBigImage: (tag,id) => {
+    //   dispatch(fetchBigImage(tag,id));
+    // }
   };
 };
 
