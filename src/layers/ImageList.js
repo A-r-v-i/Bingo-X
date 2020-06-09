@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Spinner } from "reactstrap";
+import { Spinner, Card, CardBody, CardImg, CardFooter } from "reactstrap";
 import UserDetails from "./UserDetails";
 import { fetchImages, searchImages } from "../store/actions";
 import OpenImage from "./OpenImage";
@@ -39,31 +39,14 @@ class ImageList extends Component {
   renderImages = (images) => {
     return images.map((image) => {
       return (
-        <div id="image" key={image.id}>
-          <img
-            onClick={() => this.openImage(image)}
-            src={image.urls.regular}
-            alt={image.alt_description}
-          />
-          <div className="tags">
-            {/*<div>
-              {image.tags.map((tag) => {
-                return (
-                  <span
-                    className="tag"
-                    key={tag.title}
-                    onClick={() => this.props.searchImages(tag.title)}
-                  >
-                    {tag.title}
-                  </span>
-                );
-              })}
-            </div> */}
-            <div className="user">
-              <UserDetails userdetails={image.user} />
-            </div>
-          </div>
-        </div>
+          <Card key={image.id} id="image">
+            <CardImg
+              top
+              width="100%"
+              src={image.urls.thumb}
+              alt={image.alt_description}
+            />
+          </Card>
       );
     });
   };
@@ -73,9 +56,9 @@ class ImageList extends Component {
     images.length ? console.log("yes") : console.log("no");
     //console.log(images)
     const blur = this.state.isOpen ? true : false;
-    const show = images.length ? images : '';
+    const show = images.length ? images : "";
 
-    console.log(show); 
+    console.log(show);
 
     return (
       <div className="images-container">
